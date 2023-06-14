@@ -1,11 +1,8 @@
 import "./App.css";
+import { MainPage } from "./pages/MainPage";
 
 function App() {
-  return (
-    <div className="w-full h-full">
-      <p className="text-red-400">faruk</p>
-    </div>
-  );
+  return <MainPage />;
 }
 
 export default App;
