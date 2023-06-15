@@ -10,7 +10,7 @@ export function RowSelector({
 }: RowSelectorProps) {
   return (
     <div className="w-28 rounded-3xl bg-white border-[1px] border-lightPurple h-9 items-center flex pl-4">
-      <p className="text-sm">{rowAmount} rows</p>
+      <p className="text-sm">{rowAmount - 1} rows</p>
       <div className="flex flex-col ml-auto mr-2">
         <img
           src={require("../assets/icons/upperArrowIcon.svg").default}
