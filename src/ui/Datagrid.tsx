@@ -1,8 +1,8 @@
 import { Rectangles } from "./Rectangles";
 
-type DatagridProps = { rowAmount?: number };
-export function Datagrid({ rowAmount = 5 }: DatagridProps) {
-  const arr = new Array(rowAmount).fill(0);
+type DatagridProps = { rowAmount?: number; arr: any[] };
+export function Datagrid({ rowAmount = 5, arr }: DatagridProps) {
+  //const arr = new Array(rowAmount).fill(0);
   return (
     <div className="">
       {arr.map((element, index) => (
@@ -18,7 +18,7 @@ export function Datagrid({ rowAmount = 5 }: DatagridProps) {
             }
             color={index % 2 === 1 || index === 0 ? "white" : "gray"}
             isHeader={index === 0}
-            text="Sosyal Medya Linki"
+            text={element.link}
             columnNo={1}
             isBottomRow={index === arr.length - 1}
           />
@@ -27,7 +27,7 @@ export function Datagrid({ rowAmount = 5 }: DatagridProps) {
             borderType={undefined}
             color={index % 2 === 1 || index === 0 ? "white" : "gray"}
             isHeader={index === 0}
-            text="Sosyal Medya Adı"
+            text={element.name}
             columnNo={2}
             isBottomRow={index === arr.length - 1}
           />
@@ -42,7 +42,7 @@ export function Datagrid({ rowAmount = 5 }: DatagridProps) {
             }
             color={index % 2 === 1 || index === 0 ? "white" : "gray"}
             isHeader={index === 0}
-            text="Açıklama"
+            text={element.explanation}
             columnNo={3}
             isBottomRow={index === arr.length - 1}
           />

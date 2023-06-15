@@ -6,13 +6,14 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { SideBar } from "../ui/SiderBar";
 import { RowSelector } from "../ui/RowSelector";
 import { CreateAccount } from "../ui/CreateAccount";
+import { Pagination } from "../ui/Pagination";
 
 export function MainPage() {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
   ]);
-  const [rowCount, setRowCount] = useState(10);
+  const [rowCount, setRowCount] = useState(7);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -32,13 +33,29 @@ export function MainPage() {
   const [isCreateAccountOpen, setIsCreateAccountOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [items, setItems] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   useEffect(() => {
     const fetchedItems = localStorage.getItem("items");
     if (fetchedItems != null) {
       setItems(JSON.parse(fetchedItems));
     }
   }, []);
-  console.log(items);
+  const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1));
+  const itemArr = [];
+  const startItemIndex = (currentPage - 1) * (rowCount - 1);
+  itemArr.push({
+    link: "Sosyal Medya Linki",
+    name: "Sosyal Medya Adı",
+    explanation: "Açıklama",
+  });
+  for (let i = startItemIndex; i < startItemIndex + rowCount - 1; i++) {
+    if (i >= items.length) {
+      itemArr.push({ link: "", name: "", explanation: "" });
+      continue;
+    }
+    itemArr.push(items[i]);
+  }
+
   return (
     <div className="flex flex-col w-full h-full">
       {isNavbarOpen && (
@@ -119,22 +136,41 @@ export function MainPage() {
           </div>
         </div>
         <div className="mb-4">
-          <Datagrid rowAmount={rowCount} />
+          <Datagrid rowAmount={rowCount} arr={itemArr} />
         </div>
-        <div className="mb-4">
+
+        <div className="flex flex-row mb-4">
           <RowSelector
             rowAmount={rowCount}
             decreaseRowAmount={() => {
-              if (rowCount >= 2) {
+              if (rowCount >= 3) {
                 setRowCount(rowCount - 1);
+                setCurrentPage(1);
               }
             }}
             increaseRowAmount={() => {
               if (rowCount <= 9) {
                 setRowCount(rowCount + 1);
+                setCurrentPage(1);
               }
             }}
           />
+          <div className="ml-auto">
+            <Pagination
+              currentPage={currentPage}
+              maxPage={maxPage}
+              increasePage={() => {
+                if (currentPage < maxPage) {
+                  setCurrentPage(currentPage + 1);
+                }
+              }}
+              decreasePage={() => {
+                if (currentPage > 1) {
+                  setCurrentPage(currentPage - 1);
+                }
+              }}
+            />
+          </div>
         </div>
         {isCreateAccountOpen && (
           <div className="absolute left-1/2 -translate-x-2/4 top-32 drop-shadow-xl">
