@@ -20,7 +20,7 @@ export function Button({
 }: ButtonProps) {
   const buttonColor = color === "Gray" ? "bg-buttonGray" : "bg-lightPurple";
   const buttonRadius = bending === "low" ? "rounded-2xl" : "rounded-3xl";
-  const buttonHeight = size === "large" ? "h-8" : "h-10";
+  const buttonHeight = size === "large" ? "h-8" : "h-11";
 
   const buttonStyle = `w-full flex items-center justify-center ${buttonColor} ${buttonRadius} ${buttonHeight}`;
   const textStyle = color === "Gray" ? "text-lightPurple" : "text-white";
