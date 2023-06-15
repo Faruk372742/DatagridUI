@@ -4,12 +4,14 @@ import { Input } from "../ui/Input";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { SideBar } from "../ui/SiderBar";
+import { RowSelector } from "../ui/RowSelector";
 
 export function MainPage() {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
   ]);
+  const [rowCount, setRowCount] = useState(10);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -91,7 +93,24 @@ export function MainPage() {
             </Button>
           </div>
         </div>
-        <Datagrid rowAmount={10} />
+        <div className="mb-4">
+          <Datagrid rowAmount={rowCount} />
+        </div>
+        <div className="mb-4">
+          <RowSelector
+            rowAmount={rowCount}
+            decreaseRowAmount={() => {
+              if (rowCount >= 2) {
+                setRowCount(rowCount - 1);
+              }
+            }}
+            increaseRowAmount={() => {
+              if (rowCount <= 9) {
+                setRowCount(rowCount + 1);
+              }
+            }}
+          />
+        </div>
       </div>
     </div>
   );
