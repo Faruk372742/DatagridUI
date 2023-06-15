@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "svg-react-loader": "^0.4.6",
     "tailwindcss": "^3.3.2"
   }
 }
