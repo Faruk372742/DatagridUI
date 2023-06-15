@@ -1,4 +1,5 @@
 import { BsArrowDown, BsArrowUp } from "react-icons/bs";
+import { RectangleStyles } from "../utils/RectangleStyles";
 
 export type ColorType = "white" | "gray";
 export type BorderType =
@@ -23,41 +24,15 @@ export function Rectangles({
   columnNo,
   isBottomRow,
 }: RectangleProps) {
-  const borderRadiusStyle =
-    isHeader && isBottomRow && columnNo !== 2
-      ? columnNo === 1
-        ? "rounded-tl-lg rounded-bl-lg"
-        : "rounded-tr-lg rounded-br-lg"
-      : borderType === "bottom-left"
-      ? "rounded-bl-lg"
-      : borderType === "bottom-right"
-      ? "rounded-br-lg"
-      : borderType === "top-left"
-      ? "rounded-tl-lg"
-      : borderType === "top-right"
-      ? "rounded-tr-lg"
-      : "";
-
-  const borderStyle = columnNo <= 2 ? "border-r-[1.5px] border-borderGrey" : "";
-  const bottomHeaderBorderStyle = isHeader
-    ? "border-borderGrey border-b-[1.5px]"
-    : "";
-  const topHeaderBorderStyle = isHeader
-    ? "border-borderGrey border-t-[1px]"
-    : "";
-
-  const sideBorderStyle =
-    columnNo === 1
-      ? "border-l-[1px] border-borderGrey"
-      : columnNo === 3
-      ? "border-r-[1px] border-borderGrey"
-      : "";
-
-  const bottomBorderStyle = isBottomRow
-    ? "border-b-[1px] border-borderGrey"
-    : "";
-
-  const bgColor = color === "gray" ? "bg-bgGray" : "bg-white";
+  const {
+    borderRadiusStyle,
+    borderStyle,
+    bottomHeaderBorderStyle,
+    topHeaderBorderStyle,
+    sideBorderStyle,
+    bottomBorderStyle,
+    bgColor,
+  } = RectangleStyles(color, isHeader, borderType, columnNo, isBottomRow);
 
   const rectangleStyle = `h-16 w-full pl-4 pt-4 items-center  ${borderRadiusStyle}
    ${borderStyle} ${bgColor} ${bottomHeaderBorderStyle} ${topHeaderBorderStyle} ${sideBorderStyle} ${bottomBorderStyle}`;
