@@ -4,7 +4,7 @@ type DatagridProps = { rowAmount?: number };
 export function Datagrid({ rowAmount = 5 }: DatagridProps) {
   const arr = new Array(rowAmount).fill(0);
   return (
-    <div className="px-12">
+    <div className="">
       {arr.map((element, index) => (
         <div className={"flex flex-row"} key={index}>
           <Rectangles
