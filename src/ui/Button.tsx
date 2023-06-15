@@ -18,7 +18,12 @@ export function Button({
   isIconExist,
   ...props
 }: ButtonProps) {
-  const buttonColor = color === "Gray" ? "bg-buttonGray" : "bg-lightPurple";
+  const buttonColor =
+    color === "Gray"
+      ? "bg-buttonGray"
+      : props.disabled
+      ? "bg-disabledPurple"
+      : "bg-lightPurple";
   const buttonRadius = bending === "low" ? "rounded-2xl" : "rounded-3xl";
   const buttonHeight = size === "large" ? "h-8" : "h-11";
 

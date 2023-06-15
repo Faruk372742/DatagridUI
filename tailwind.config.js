@@ -11,6 +11,7 @@ module.exports = {
         lightPurple: "#744BFC",
         buttonGray: "#F5F7FF",
         inputBorderGray: "#D9D9D9",
+        disabledPurple: "#C0B8DC",
       },
     },
   },

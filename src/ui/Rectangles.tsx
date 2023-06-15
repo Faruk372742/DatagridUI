@@ -37,7 +37,7 @@ export function Rectangles({
   const rectangleStyle = `h-16 w-full pl-4 pt-4 items-center  ${borderRadiusStyle}
    ${borderStyle} ${bgColor} ${bottomHeaderBorderStyle} ${topHeaderBorderStyle} ${sideBorderStyle} ${bottomBorderStyle}`;
 
-  const textStyle = isHeader ? "font-bold" : "";
+  const textStyle = isHeader ? "font-medium" : "";
   return (
     <div className={rectangleStyle}>
       <div className="flex flex-row w-full">
