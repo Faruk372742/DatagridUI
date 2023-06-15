@@ -92,7 +92,7 @@ export function MainPage() {
         )}
       </div>
 
-      <div className="ml-6 mr-6 bg-bgGray px-12 rounded-md">
+      <div className="ml-6 mr-6 bg-bgGray px-12 rounded-md mb-4">
         <div className="flex flex-row items-center mt-4 mb-1">
           <div className="w-96">
             <Input
