@@ -50,7 +50,10 @@ export function MainPage() {
       setFixedItems(JSON.parse(fetchedItems));
     }
   }, []);
-  const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1)); //Calculating total page amount
+  const maxPage = Math.max(
+    1,
+    Math.floor((items.length + rowCount - 2) / (rowCount - 1))
+  ); //Calculating total page amount
   let itemArr: { link: string; name: string; explanation: string }[] = [];
   const startItemIndex = (currentPage - 1) * (rowCount - 1);
 
