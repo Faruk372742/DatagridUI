@@ -32,7 +32,7 @@ export function Button({
 
   return (
     <button className={buttonStyle} {...props}>
-      {isIconExist && (
+      {isIconExist && ( //Put + icon to the left side of the button
         <div className="mr-1.5">
           <AiOutlinePlus
             color={color === "Gray" ? "#744BFC" : "white"}

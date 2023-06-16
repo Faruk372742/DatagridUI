@@ -11,6 +11,7 @@ export function CreateAccount({ closeModal, addItem }: CreateAccountProps) {
   const [name, setName] = useState("");
   const [explanation, setExplanation] = useState("");
   const isButtonDisabled = useMemo(() => {
+    //Empty fields prevents form submission
     const c1 = link.trim() === "";
     const c2 = name.trim() === "";
     const c3 = explanation.trim() === "";

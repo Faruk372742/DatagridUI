@@ -12,14 +12,17 @@ import { SearchInTheArray } from "../utils/SearchInTheArray";
 
 export function MainPage() {
   const [windowSize, setWindowSize] = useState([
+    //Used to keep track of windowSize
     window.innerWidth,
     window.innerHeight,
   ]);
-  const [rowCount, setRowCount] = useState(7);
+  const [rowCount, setRowCount] = useState(7); //Datagrid row amount
 
   useEffect(() => {
+    //Use to adjust window size
     const handleWindowResize = () => {
       if (window.innerWidth >= 900) {
+        //Responsive top bar
         setIsNavbarOpen(false);
       }
       setWindowSize([window.innerWidth, window.innerHeight]);
@@ -40,17 +43,19 @@ export function MainPage() {
   const [isNamesSorted, setIsNamesSorted] = useState(false);
   const [fixedItems, setFixedItems] = useState([]);
   useEffect(() => {
+    //Items are fetched from local storage
     const fetchedItems = localStorage.getItem("items");
     if (fetchedItems != null) {
       setItems(JSON.parse(fetchedItems));
       setFixedItems(JSON.parse(fetchedItems));
     }
   }, []);
-  const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1));
+  const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1)); //Calculating total page amount
   let itemArr: { link: string; name: string; explanation: string }[] = [];
   const startItemIndex = (currentPage - 1) * (rowCount - 1);
 
   for (let i = startItemIndex; i < startItemIndex + rowCount - 1; i++) {
+    //Items in the current page
     if (i >= items.length) {
       itemArr.push({ link: "", name: "", explanation: "" });
       continue;
@@ -59,6 +64,7 @@ export function MainPage() {
   }
 
   itemArr = SortArray({
+    //Sort items according to their links or names
     arr: itemArr,
     isLinksSorted: isLinksSorted,
     isNamesSorted: isNamesSorted,
@@ -79,7 +85,7 @@ export function MainPage() {
           src={require("../assets/icons/rastIcon.svg").default}
           alt="rastLogo"
         />
-        {windowSize[0] >= 900 && (
+        {windowSize[0] >= 900 && ( //If window is enough large, make topbar in the normal way
           <>
             <p className="ml-[10%] mr-[6%]">Hakkımızda</p>
             <p className="mr-[6%]">Jüri - Yarışma Yazılımı</p>
@@ -107,7 +113,7 @@ export function MainPage() {
             />
           </>
         )}
-        {windowSize[0] < 900 && (
+        {windowSize[0] < 900 && ( //If window is small show Hamburger type topbar
           <div className="w-full flex justify-end items-center ml-0 mr-[5%]">
             <RxHamburgerMenu
               className="w-5 h-5"

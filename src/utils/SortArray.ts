@@ -14,6 +14,7 @@ export function SortArray({
   isNamesSorted,
 }: SortArrayProps) {
   arr = arr.sort((a, b) => {
+    //Items in the page are sorted according to their link and name
     if (!isLinksSorted && !isNamesSorted) {
       return 0;
     }
