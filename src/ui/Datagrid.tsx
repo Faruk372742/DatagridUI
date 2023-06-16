@@ -1,8 +1,23 @@
 import { Rectangles } from "./Rectangles";
 
-type DatagridProps = { rowAmount?: number; arr: any[] };
-export function Datagrid({ rowAmount = 5, arr }: DatagridProps) {
-  //const arr = new Array(rowAmount).fill(0);
+type DatagridProps = {
+  arr: any[];
+  isNamesSorted: boolean;
+  isLinksSorted: boolean;
+  sortLinks: () => void;
+  sortNames: () => void;
+  unsortLinks: () => void;
+  unsortNames: () => void;
+};
+export function Datagrid({
+  arr,
+  isNamesSorted,
+  isLinksSorted,
+  sortLinks,
+  sortNames,
+  unsortLinks,
+  unsortNames,
+}: DatagridProps) {
   return (
     <div className="">
       {arr.map((element, index) => (
@@ -21,6 +36,12 @@ export function Datagrid({ rowAmount = 5, arr }: DatagridProps) {
             text={element.link}
             columnNo={1}
             isBottomRow={index === arr.length - 1}
+            isNamesSorted={isNamesSorted}
+            isLinksSorted={isLinksSorted}
+            sortLinks={sortLinks}
+            sortNames={sortNames}
+            unsortLinks={unsortLinks}
+            unsortNames={unsortNames}
           />
           <Rectangles
             key={index.toString() + "rect2"}
@@ -30,6 +51,12 @@ export function Datagrid({ rowAmount = 5, arr }: DatagridProps) {
             text={element.name}
             columnNo={2}
             isBottomRow={index === arr.length - 1}
+            isNamesSorted={isNamesSorted}
+            isLinksSorted={isLinksSorted}
+            sortLinks={sortLinks}
+            sortNames={sortNames}
+            unsortLinks={unsortLinks}
+            unsortNames={unsortNames}
           />
           <Rectangles
             key={index.toString() + "rect3"}
@@ -45,6 +72,12 @@ export function Datagrid({ rowAmount = 5, arr }: DatagridProps) {
             text={element.explanation}
             columnNo={3}
             isBottomRow={index === arr.length - 1}
+            isNamesSorted={isNamesSorted}
+            isLinksSorted={isLinksSorted}
+            sortLinks={sortLinks}
+            sortNames={sortNames}
+            unsortLinks={unsortLinks}
+            unsortNames={unsortNames}
           />
         </div>
       ))}
