@@ -1,5 +1,5 @@
-#Datagrid UI
+# Datagrid UI
 
 To run: npm start
 
-All rights are reserved to Faruk Avcı.
+### All rights are reserved to Faruk Avcı.
