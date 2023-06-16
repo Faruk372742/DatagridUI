@@ -15,6 +15,12 @@ export type RectangleProps = {
   borderType: BorderType;
   columnNo: number;
   isBottomRow: boolean;
+  isNamesSorted: boolean;
+  isLinksSorted: boolean;
+  sortLinks: () => void;
+  sortNames: () => void;
+  unsortLinks: () => void;
+  unsortNames: () => void;
 };
 export function Rectangles({
   text,
@@ -23,6 +29,12 @@ export function Rectangles({
   borderType,
   columnNo,
   isBottomRow,
+  isNamesSorted,
+  isLinksSorted,
+  sortLinks,
+  sortNames,
+  unsortLinks,
+  unsortNames,
 }: RectangleProps) {
   const {
     borderRadiusStyle,
@@ -43,12 +55,38 @@ export function Rectangles({
       <div className="flex flex-row w-full">
         <p className={textStyle}>{text}</p>
         <div className="flex items-center ml-auto mr-2">
-          {isHeader && columnNo === 1 && (
-            <BsArrowUp color="#744BFC" fontWeight={1000} className="w-5 h-5" />
-          )}
-          {isHeader && columnNo === 2 && (
-            <BsArrowDown color="#C0B8DC" className="w-5 h-5" />
-          )}
+          {isHeader &&
+            columnNo === 1 &&
+            (isLinksSorted ? (
+              <BsArrowUp
+                color="#744BFC"
+                fontWeight={1000}
+                className="w-5 h-5"
+                onClick={unsortLinks}
+              />
+            ) : (
+              <BsArrowDown
+                color="#C0B8DC"
+                className="w-5 h-5"
+                onClick={sortLinks}
+              />
+            ))}
+          {isHeader &&
+            columnNo === 2 &&
+            (isNamesSorted ? (
+              <BsArrowUp
+                color="#744BFC"
+                fontWeight={1000}
+                className="w-5 h-5"
+                onClick={unsortNames}
+              />
+            ) : (
+              <BsArrowDown
+                color="#C0B8DC"
+                className="w-5 h-5"
+                onClick={sortNames}
+              />
+            ))}
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { SideBar } from "../ui/SiderBar";
 import { RowSelector } from "../ui/RowSelector";
 import { CreateAccount } from "../ui/CreateAccount";
 import { Pagination } from "../ui/Pagination";
+import { SortArray } from "../utils/SortArray";
 
 export function MainPage() {
   const [windowSize, setWindowSize] = useState([
@@ -34,6 +35,8 @@ export function MainPage() {
   const [searchText, setSearchText] = useState("");
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLinksSorted, setIsLinksSorted] = useState(false);
+  const [isNamesSorted, setIsNamesSorted] = useState(false);
   useEffect(() => {
     const fetchedItems = localStorage.getItem("items");
     if (fetchedItems != null) {
@@ -41,13 +44,9 @@ export function MainPage() {
     }
   }, []);
   const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1));
-  const itemArr = [];
+  let itemArr = [];
   const startItemIndex = (currentPage - 1) * (rowCount - 1);
-  itemArr.push({
-    link: "Sosyal Medya Linki",
-    name: "Sosyal Medya Adı",
-    explanation: "Açıklama",
-  });
+
   for (let i = startItemIndex; i < startItemIndex + rowCount - 1; i++) {
     if (i >= items.length) {
       itemArr.push({ link: "", name: "", explanation: "" });
@@ -55,6 +54,17 @@ export function MainPage() {
     }
     itemArr.push(items[i]);
   }
+
+  itemArr = SortArray({
+    arr: itemArr,
+    isLinksSorted: isLinksSorted,
+    isNamesSorted: isNamesSorted,
+  });
+  itemArr.unshift({
+    link: "Sosyal Medya Linki",
+    name: "Sosyal Medya Adı",
+    explanation: "Açıklama",
+  });
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -123,6 +133,12 @@ export function MainPage() {
               }}
             />
           </div>
+          <div className="w-12 h-10 rounded-[29px] bg-white items-center flex justify-center ml-2.5">
+            <img
+              src={require("../assets/icons/insideOfFilterIcon.svg").default}
+              alt="insideOfFilterIcon"
+            />
+          </div>
           <div className="mb-2.5 w-44 ml-auto mt-2">
             <Button
               bending="high"
@@ -136,7 +152,23 @@ export function MainPage() {
           </div>
         </div>
         <div className="mb-4">
-          <Datagrid rowAmount={rowCount} arr={itemArr} />
+          <Datagrid
+            arr={itemArr}
+            isNamesSorted={isNamesSorted}
+            isLinksSorted={isLinksSorted}
+            sortLinks={() => {
+              setIsLinksSorted(true);
+            }}
+            sortNames={() => {
+              setIsNamesSorted(true);
+            }}
+            unsortLinks={() => {
+              setIsLinksSorted(false);
+            }}
+            unsortNames={() => {
+              setIsNamesSorted(false);
+            }}
+          />
         </div>
 
         <div className="flex flex-row mb-4">
