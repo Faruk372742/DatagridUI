@@ -22,63 +22,69 @@ export function Datagrid({
     <div className="">
       {arr.map((element, index) => (
         <div className={"flex flex-row"} key={index}>
-          <Rectangles
-            key={index.toString() + "rect1"}
-            borderType={
-              index === 0
-                ? "top-left"
-                : index === arr.length - 1
-                ? "bottom-left"
-                : undefined
-            }
-            color={index % 2 === 1 || index === 0 ? "white" : "gray"}
-            isHeader={index === 0}
-            text={element.link}
-            columnNo={1}
-            isBottomRow={index === arr.length - 1}
-            isNamesSorted={isNamesSorted}
-            isLinksSorted={isLinksSorted}
-            sortLinks={sortLinks}
-            sortNames={sortNames}
-            unsortLinks={unsortLinks}
-            unsortNames={unsortNames}
-          />
-          <Rectangles
-            key={index.toString() + "rect2"}
-            borderType={undefined}
-            color={index % 2 === 1 || index === 0 ? "white" : "gray"}
-            isHeader={index === 0}
-            text={element.name}
-            columnNo={2}
-            isBottomRow={index === arr.length - 1}
-            isNamesSorted={isNamesSorted}
-            isLinksSorted={isLinksSorted}
-            sortLinks={sortLinks}
-            sortNames={sortNames}
-            unsortLinks={unsortLinks}
-            unsortNames={unsortNames}
-          />
-          <Rectangles
-            key={index.toString() + "rect3"}
-            borderType={
-              index === 0
-                ? "top-right"
-                : index === arr.length - 1
-                ? "bottom-right"
-                : undefined
-            }
-            color={index % 2 === 1 || index === 0 ? "white" : "gray"}
-            isHeader={index === 0}
-            text={element.explanation}
-            columnNo={3}
-            isBottomRow={index === arr.length - 1}
-            isNamesSorted={isNamesSorted}
-            isLinksSorted={isLinksSorted}
-            sortLinks={sortLinks}
-            sortNames={sortNames}
-            unsortLinks={unsortLinks}
-            unsortNames={unsortNames}
-          />
+          <div className="w-1/3">
+            <Rectangles
+              key={index.toString() + "rect1"}
+              borderType={
+                index === 0
+                  ? "top-left"
+                  : index === arr.length - 1
+                  ? "bottom-left"
+                  : undefined
+              }
+              color={index % 2 === 1 || index === 0 ? "white" : "gray"}
+              isHeader={index === 0}
+              text={element.link}
+              columnNo={1}
+              isBottomRow={index === arr.length - 1}
+              isNamesSorted={isNamesSorted}
+              isLinksSorted={isLinksSorted}
+              sortLinks={sortLinks}
+              sortNames={sortNames}
+              unsortLinks={unsortLinks}
+              unsortNames={unsortNames}
+            />
+          </div>
+          <div className="w-1/3">
+            <Rectangles
+              key={index.toString() + "rect2"}
+              borderType={undefined}
+              color={index % 2 === 1 || index === 0 ? "white" : "gray"}
+              isHeader={index === 0}
+              text={element.name}
+              columnNo={2}
+              isBottomRow={index === arr.length - 1}
+              isNamesSorted={isNamesSorted}
+              isLinksSorted={isLinksSorted}
+              sortLinks={sortLinks}
+              sortNames={sortNames}
+              unsortLinks={unsortLinks}
+              unsortNames={unsortNames}
+            />
+          </div>
+          <div className="w-1/3">
+            <Rectangles
+              key={index.toString() + "rect3"}
+              borderType={
+                index === 0
+                  ? "top-right"
+                  : index === arr.length - 1
+                  ? "bottom-right"
+                  : undefined
+              }
+              color={index % 2 === 1 || index === 0 ? "white" : "gray"}
+              isHeader={index === 0}
+              text={element.explanation}
+              columnNo={3}
+              isBottomRow={index === arr.length - 1}
+              isNamesSorted={isNamesSorted}
+              isLinksSorted={isLinksSorted}
+              sortLinks={sortLinks}
+              sortNames={sortNames}
+              unsortLinks={unsortLinks}
+              unsortNames={unsortNames}
+            />
+          </div>
         </div>
       ))}
     </div>

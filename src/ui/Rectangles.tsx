@@ -46,13 +46,13 @@ export function Rectangles({
     bgColor,
   } = RectangleStyles(color, isHeader, borderType, columnNo, isBottomRow);
 
-  const rectangleStyle = `h-16 w-full pl-4 pt-4 items-center  ${borderRadiusStyle}
+  const rectangleStyle = `h-16 w-full pl-4 pt-4 items-center ${borderRadiusStyle}
    ${borderStyle} ${bgColor} ${bottomHeaderBorderStyle} ${topHeaderBorderStyle} ${sideBorderStyle} ${bottomBorderStyle}`;
 
-  const textStyle = isHeader ? "font-medium" : "";
+  const textStyle = isHeader ? "font-medium truncate" : "truncate";
   return (
     <div className={rectangleStyle}>
-      <div className="flex flex-row w-full">
+      <div className="flex flex-row w-full ">
         <p className={textStyle}>{text}</p>
         <div className="flex items-center ml-auto mr-2">
           {isHeader &&
