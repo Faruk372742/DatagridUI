@@ -8,6 +8,7 @@ import { RowSelector } from "../ui/RowSelector";
 import { CreateAccount } from "../ui/CreateAccount";
 import { Pagination } from "../ui/Pagination";
 import { SortArray } from "../utils/SortArray";
+import { SearchInTheArray } from "../utils/SearchInTheArray";
 
 export function MainPage() {
   const [windowSize, setWindowSize] = useState([
@@ -37,14 +38,16 @@ export function MainPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLinksSorted, setIsLinksSorted] = useState(false);
   const [isNamesSorted, setIsNamesSorted] = useState(false);
+  const [fixedItems, setFixedItems] = useState([]);
   useEffect(() => {
     const fetchedItems = localStorage.getItem("items");
     if (fetchedItems != null) {
       setItems(JSON.parse(fetchedItems));
+      setFixedItems(JSON.parse(fetchedItems));
     }
   }, []);
   const maxPage = Math.floor((items.length + rowCount - 2) / (rowCount - 1));
-  let itemArr = [];
+  let itemArr: { link: string; name: string; explanation: string }[] = [];
   const startItemIndex = (currentPage - 1) * (rowCount - 1);
 
   for (let i = startItemIndex; i < startItemIndex + rowCount - 1; i++) {
@@ -130,6 +133,10 @@ export function MainPage() {
                 if (!isCreateAccountOpen) {
                   setSearchText(e.target.value);
                 }
+              }}
+              filterItems={() => {
+                setCurrentPage(1);
+                setItems(SearchInTheArray({ fixedItems, searchText }) as never);
               }}
             />
           </div>
@@ -218,6 +225,10 @@ export function MainPage() {
                 );
                 setItems([
                   ...items,
+                  { link: link, name: name, explanation: exp },
+                ] as never);
+                setFixedItems([
+                  ...fixedItems,
                   { link: link, name: name, explanation: exp },
                 ] as never);
                 setIsCreateAccountOpen(false);
