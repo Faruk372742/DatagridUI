@@ -15,7 +15,7 @@ export function Input({
   return (
     <div className="w-full flex flex-row">
       <input className={inputStyle} {...props} />
-      {isIconExist && (
+      {isIconExist && ( //Put search icon to the right side of the input field
         <div className="flex justify-center" onClick={filterItems}>
           <div className="w-12 bg-lightPurple absolute h-11 rounded-r-3xl flex justify-center items-center mr-12">
             <img

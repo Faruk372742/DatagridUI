@@ -14,7 +14,7 @@ export function Pagination({
   return (
     <div className="flex flex-row items-center justify-center">
       <div className="mr-3">
-        <AiOutlineLeft
+        <AiOutlineLeft //Left arrow and it decreases the current page
           color={currentPage === 1 ? "#C9C9C9" : "#744BFC"}
           className="w-5 h-5"
           onClick={decreasePage}
@@ -25,7 +25,7 @@ export function Pagination({
       </div>
       <p className="text-[#C9C9C9] mr-3">of</p>
       <p className="text-lightPurple mr-3">{maxPage}</p>
-      <AiOutlineRight
+      <AiOutlineRight //Right arrow and it increases the current page
         color={currentPage === maxPage ? "#C9C9C9" : "#744BFC"}
         className="w-5 h-5"
         onClick={increasePage}

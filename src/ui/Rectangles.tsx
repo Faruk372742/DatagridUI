@@ -58,14 +58,14 @@ export function Rectangles({
           {isHeader &&
             columnNo === 1 &&
             (isLinksSorted ? (
-              <BsArrowUp
+              <BsArrowUp //Adjust link sorting arrow
                 color="#744BFC"
                 fontWeight={1000}
                 className="w-5 h-5"
                 onClick={unsortLinks}
               />
             ) : (
-              <BsArrowDown
+              <BsArrowDown //Adjust link sorting arrow
                 color="#C0B8DC"
                 className="w-5 h-5"
                 onClick={sortLinks}
@@ -74,14 +74,14 @@ export function Rectangles({
           {isHeader &&
             columnNo === 2 &&
             (isNamesSorted ? (
-              <BsArrowUp
+              <BsArrowUp //Adjust name sorting arrow
                 color="#744BFC"
                 fontWeight={1000}
                 className="w-5 h-5"
                 onClick={unsortNames}
               />
             ) : (
-              <BsArrowDown
+              <BsArrowDown //Adjust name sorting arrow
                 color="#C0B8DC"
                 className="w-5 h-5"
                 onClick={sortNames}

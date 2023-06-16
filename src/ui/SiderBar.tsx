@@ -3,7 +3,7 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 type SideBarProps = { onClick: () => void };
 export function SideBar({ onClick }: SideBarProps) {
   return (
-    <Sidebar
+    <Sidebar //React sidebar library is used for make responsive top bar.
       rootStyles={{
         backgroundColor: "#E5DC17",
         height: "100vh",
