@@ -1,0 +1,10 @@
+Rast Mobile Frontend Task
+
+Purpose of the project was implementing a website with datagrid and pop-up UI's.
+Firstly, wanted website design is partitioned into components such as Button, Input, Row Selector, Pagination, Datagrid, and Sidebar.
+All these components are implemented independently and generic way to handle all designs in the given website. 
+After that, all of the implemented components are merged into a single page. 
+Dynamic mechanisms are built such as search, row sort, new account addition, row count selection, and change page. 
+Lastly, saved records are saved into localstorage and responsive design is built.
+
+Faruk Avcı. 
